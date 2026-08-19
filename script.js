@@ -64,29 +64,10 @@ document.querySelectorAll(".billing-toggle button").forEach(b=>b.addEventListene
 const saved=localStorage.getItem("os_currency");if(saved&&currencies[saved])currency=saved;
 updatePricing();
 
-/* Submits to a Google Apps Script Web App, which emails the enquiry to NOTIFY_EMAIL.
-   See google-apps-script/Code.gs for the backend script and setup steps — replace
-   the placeholder URL below with your deployed Web App URL. */
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
-
-document.getElementById("contactForm").addEventListener("submit",async e=>{
+document.getElementById("contactForm").addEventListener("submit",e=>{
  e.preventDefault();
- const form=e.target, msg=document.getElementById("formMessage"), btn=form.querySelector("button[type=submit]");
- if(GOOGLE_SCRIPT_URL.startsWith("PASTE_")){
-   msg.textContent="Form isn't connected yet — add your Google Apps Script URL in script.js.";
-   return;
- }
- const original=btn.textContent;
- btn.disabled=true; btn.textContent="Sending...";
- try{
-   await fetch(GOOGLE_SCRIPT_URL,{method:"POST",mode:"no-cors",body:new FormData(form)});
-   msg.textContent="Thanks — we've received your enquiry and will be in touch shortly.";
-   form.reset();
- }catch(err){
-   msg.textContent="Something went wrong sending your enquiry. Please try again or email us directly.";
- }finally{
-   btn.disabled=false; btn.textContent=original;
- }
+ document.getElementById("formMessage").textContent="Thanks — your enquiry is ready to be connected to your email or CRM backend.";
+ e.target.reset();
 });
 
 /* ===== PREMIUM MOTION ENGINE ===== */
