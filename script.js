@@ -56,31 +56,12 @@ function updatePricing(){
    card.querySelector("[data-price]").textContent=formatMoney(raw);
    card.querySelector(".currency-symbol").textContent=c.symbol;
  });
- updateCalculator();
 }
 document.getElementById("currencySelect").addEventListener("change",e=>{currency=e.target.value;localStorage.setItem("os_currency",currency);updatePricing()});
 document.querySelectorAll(".billing-toggle button").forEach(b=>b.addEventListener("click",()=>{
  document.querySelectorAll(".billing-toggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");billing=b.dataset.billing;updatePricing();
 }));
 const saved=localStorage.getItem("os_currency");if(saved&&currencies[saved])currency=saved;
-
-let calcPlan="team", calcBilling="monthly";
-function updateCalculator(){
- const users=Math.max(1,Math.min(500,+document.getElementById("userCount").value||1));
- document.getElementById("userCountValue").textContent=users;
- const annual=calcBilling==="annual";
- let per=basePrices[calcPlan]*(annual?.8:1);
- const total=per*users;
- document.getElementById("calcTotal").textContent=currencies[currency].symbol+" "+formatMoney(total);
- document.getElementById("calcBreakdown").textContent=`${users} users × ${currencies[currency].symbol}${formatMoney(per)} / month${annual?" (annual billing)":""}`;
-}
-document.querySelectorAll("#calcPlanToggle button").forEach(b=>b.addEventListener("click",()=>{
- document.querySelectorAll("#calcPlanToggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");calcPlan=b.dataset.plan;updateCalculator();
-}));
-document.querySelectorAll("#calcBillingToggle button").forEach(b=>b.addEventListener("click",()=>{
- document.querySelectorAll("#calcBillingToggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");calcBilling=b.dataset.billing;updateCalculator();
-}));
-document.getElementById("userCount").addEventListener("input",updateCalculator);
 updatePricing();
 
 /* Submits to a Google Apps Script Web App, which logs the enquiry to a Google Sheet
@@ -120,7 +101,7 @@ document.getElementById("contactForm").addEventListener("submit",async e=>{
     hero.prepend(video);
   }
 
-  const cards=[...document.querySelectorAll(".service-demo,.price-card,.calculator,.principles>div,.form,.workflow-step")];
+  const cards=[...document.querySelectorAll(".service-demo,.price-card,.principles>div,.form,.workflow-step")];
   cards.forEach(card=>{
     card.addEventListener("pointermove",e=>{
       if(window.innerWidth<800)return;

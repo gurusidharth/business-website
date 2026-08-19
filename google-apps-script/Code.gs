@@ -24,7 +24,7 @@
  * If you ever change the form's fields, update the field list below to match.
  */
 
-const NOTIFY_EMAIL = "hello@onesolutions.com"; // <-- change this to your real inbox
+const NOTIFY_EMAIL = "siddarthmahi007@gmail.com"; // <-- change this to your real inbox
 const SHEET_NAME = "Enquiries";
 
 function doPost(e) {
