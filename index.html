@@ -19,8 +19,7 @@
     </a>
     <button class="menu" aria-label="Open navigation">☰</button>
     <nav>
-      <a href="#home">Home</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#resources">Resources</a><a href="#contact">Contact</a>
-      <button class="currency-button" id="currencyButton">INR ₹</button>
+      <a href="#home">Home</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact">Contact</a>
       <a class="nav-cta" href="#contact">Book a Demo</a>
     </nav>
   </div>
@@ -62,42 +61,51 @@
 <section class="service-intro section" id="services">
   <div class="container">
     <div class="section-head reveal"><span class="eyebrow">OUR 5 CORE SERVICES</span><h2>Everything you need to run and grow.</h2><p>Each service works independently — or connect them together as one intelligent business ecosystem.</p></div>
-    <div class="service-showcase">
-      <a class="service-card sc-ai active" href="#ai">
-        <div class="sc-media"><img src="images/ai-customer-support.jpg" alt="AI Automation" loading="lazy"><span class="sc-index">01</span></div>
-        <div class="sc-body"><span class="sc-kicker">INTELLIGENCE</span><h3>AI Automation</h3><p>Agents and workflows that work while your team focuses on growth.</p>
-          <div class="sc-stats"><span><b>24/7</b>Always on</span><span><b>&lt;1min</b>Avg. response</span></div>
-          <div class="sc-bottom"><span>AI Agents</span><span>→</span></div>
+    <div class="service-switcher">
+      <div class="ss-tabs">
+        <button type="button" class="ss-tab active" data-target="ss-ai"><span class="ss-tab-num">01</span><span class="ss-tab-text"><b>AI Automation</b><small>Agents & workflows</small></span></button>
+        <button type="button" class="ss-tab" data-target="ss-crm"><span class="ss-tab-num">02</span><span class="ss-tab-text"><b>CRM & Sales</b><small>Pipeline & conversion</small></span></button>
+        <button type="button" class="ss-tab" data-target="ss-marketing"><span class="ss-tab-num">03</span><span class="ss-tab-text"><b>Digital Marketing</b><small>Campaigns & content</small></span></button>
+        <button type="button" class="ss-tab" data-target="ss-analytics"><span class="ss-tab-num">04</span><span class="ss-tab-text"><b>Analytics</b><small>Dashboards & insight</small></span></button>
+        <button type="button" class="ss-tab" data-target="ss-erp"><span class="ss-tab-num">05</span><span class="ss-tab-text"><b>ERP & Operations</b><small>Finance, HR & inventory</small></span></button>
+      </div>
+      <div class="ss-panels">
+        <div class="ss-panel active" id="ss-ai">
+          <div class="ss-media"><img src="images/ai-customer-support.jpg" alt="AI Automation" loading="lazy"></div>
+          <div class="ss-info"><span class="ss-kicker">INTELLIGENCE</span><h3>AI Automation</h3><p>Agents and workflows that work while your team focuses on growth.</p>
+            <div class="ss-stats"><span><b>24/7</b>Always on</span><span><b>&lt;1min</b>Avg. response</span></div>
+            <a class="text-link" href="#ai">Explore AI Automation →</a>
+          </div>
         </div>
-      </a>
-      <a class="service-card sc-crm" href="#crm">
-        <div class="sc-media"><img src="images/crm-lead-pipeline.jpg" alt="CRM & Sales" loading="lazy"><span class="sc-index">02</span></div>
-        <div class="sc-body"><span class="sc-kicker">REVENUE</span><h3>CRM & Sales</h3><p>Capture, qualify and convert every opportunity in one flow.</p>
-          <div class="sc-stats"><span><b>+28%</b>More leads</span><span><b>1</b>Unified pipeline</span></div>
-          <div class="sc-bottom"><span>Sales Pipeline</span><span>→</span></div>
+        <div class="ss-panel" id="ss-crm">
+          <div class="ss-media"><img src="images/crm-lead-pipeline.jpg" alt="CRM & Sales" loading="lazy"></div>
+          <div class="ss-info"><span class="ss-kicker">REVENUE</span><h3>CRM & Sales</h3><p>Capture, qualify and convert every opportunity in one flow.</p>
+            <div class="ss-stats"><span><b>+28%</b>More leads</span><span><b>1</b>Unified pipeline</span></div>
+            <a class="text-link" href="#crm">Explore CRM & Sales →</a>
+          </div>
         </div>
-      </a>
-      <a class="service-card sc-marketing" href="#marketing">
-        <div class="sc-media"><img src="images/marketing-social-media.jpg" alt="Digital Marketing" loading="lazy"><span class="sc-index">03</span></div>
-        <div class="sc-body"><span class="sc-kicker">GROWTH</span><h3>Digital Marketing</h3><p>Plan, publish, automate and measure campaigns from one workspace.</p>
-          <div class="sc-stats"><span><b>4.8×</b>Avg. ROI</span><span><b>All</b>Channels in one</span></div>
-          <div class="sc-bottom"><span>Marketing OS</span><span>→</span></div>
+        <div class="ss-panel" id="ss-marketing">
+          <div class="ss-media"><img src="images/marketing-social-media.jpg" alt="Digital Marketing" loading="lazy"></div>
+          <div class="ss-info"><span class="ss-kicker">GROWTH</span><h3>Digital Marketing</h3><p>Plan, publish, automate and measure campaigns from one workspace.</p>
+            <div class="ss-stats"><span><b>4.8×</b>Avg. ROI</span><span><b>All</b>Channels in one</span></div>
+            <a class="text-link" href="#marketing">Explore Digital Marketing →</a>
+          </div>
         </div>
-      </a>
-      <a class="service-card sc-analytics" href="#analytics">
-        <div class="sc-media"><img src="images/analytics-executive-dashboards.jpg" alt="Analytics" loading="lazy"><span class="sc-index">04</span></div>
-        <div class="sc-body"><span class="sc-kicker">CLARITY</span><h3>Analytics</h3><p>Turn scattered business data into decisions your team can act on.</p>
-          <div class="sc-stats"><span><b>Live</b>Data sync</span><span><b>92</b>Health score</span></div>
-          <div class="sc-bottom"><span>Business Intelligence</span><span>→</span></div>
+        <div class="ss-panel" id="ss-analytics">
+          <div class="ss-media"><img src="images/analytics-executive-dashboards.jpg" alt="Analytics" loading="lazy"></div>
+          <div class="ss-info"><span class="ss-kicker">CLARITY</span><h3>Analytics</h3><p>Turn scattered business data into decisions your team can act on.</p>
+            <div class="ss-stats"><span><b>Live</b>Data sync</span><span><b>92</b>Health score</span></div>
+            <a class="text-link" href="#analytics">Explore Analytics →</a>
+          </div>
         </div>
-      </a>
-      <a class="service-card sc-erp" href="#erp">
-        <div class="sc-media"><img src="images/erp-finance-invoicing.jpg" alt="ERP & Operations" loading="lazy"><span class="sc-index">05</span></div>
-        <div class="sc-body"><span class="sc-kicker">OPERATIONS</span><h3>ERP & Operations</h3><p>Connect finance, inventory, HR and workflows behind the business.</p>
-          <div class="sc-stats"><span><b>4</b>Modules connected</span><span><b>96%</b>On-time flow</span></div>
-          <div class="sc-bottom"><span>Operations Hub</span><span>→</span></div>
+        <div class="ss-panel" id="ss-erp">
+          <div class="ss-media"><img src="images/erp-finance-invoicing.jpg" alt="ERP & Operations" loading="lazy"></div>
+          <div class="ss-info"><span class="ss-kicker">OPERATIONS</span><h3>ERP & Operations</h3><p>Connect finance, inventory, HR and workflows behind the business.</p>
+            <div class="ss-stats"><span><b>4</b>Modules connected</span><span><b>96%</b>On-time flow</span></div>
+            <a class="text-link" href="#erp">Explore ERP & Operations →</a>
+          </div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -205,8 +213,12 @@
   <div class="container">
     <div class="section-head reveal"><span class="eyebrow">TEAM PRICING</span><h2>See what your team would pay.</h2><p>Choose the number of users and we'll calculate the monthly subscription instantly.</p></div>
     <div class="calculator reveal">
-      <div class="calc-input"><label>Plan<select id="calcPlan"><option value="solo">Solo</option><option value="team" selected>Team</option><option value="scale">Scale</option></select></label><label>Users<input id="userCount" type="number" min="1" max="500" value="5"></label><label>Billing<select id="calcBilling"><option value="monthly">Monthly</option><option value="annual">Annual — 20% saving</option></select></label></div>
-      <div class="calc-result"><small>Estimated subscription</small><strong id="calcTotal">₹12,495</strong><span id="calcBreakdown">5 users × ₹2,499 / month</span><a class="btn primary" href="#contact">Get This Plan</a></div>
+      <div class="calc-input">
+        <div class="calc-field"><label>Plan</label><div class="calc-toggle" id="calcPlanToggle"><button type="button" data-plan="solo">Solo</button><button type="button" class="active" data-plan="team">Team</button><button type="button" data-plan="scale">Scale</button></div></div>
+        <div class="calc-field"><label>Users <span class="calc-user-value" id="userCountValue">5</span></label><input id="userCount" type="range" min="1" max="500" value="5"></div>
+        <div class="calc-field"><label>Billing</label><div class="calc-toggle" id="calcBillingToggle"><button type="button" class="active" data-billing="monthly">Monthly</button><button type="button" data-billing="annual">Annual <span class="calc-save">-20%</span></button></div></div>
+      </div>
+      <div class="calc-result"><small>Estimated subscription</small><strong id="calcTotal">₹12,495</strong><span id="calcBreakdown">5 users × ₹2,499 / month</span><a class="btn primary" href="#contact">Get This Plan →</a></div>
     </div>
   </div>
 </section>

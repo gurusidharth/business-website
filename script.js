@@ -49,7 +49,6 @@ function formatMoney(n){
 function updatePricing(){
  const c=currencies[currency];
  document.getElementById("currencyName").textContent=c.name;
- document.getElementById("currencyButton").textContent=currency+" "+c.symbol;
  document.getElementById("currencySelect").value=currency;
  document.querySelectorAll(".price-card").forEach(card=>{
    const key=card.querySelector("[data-price]")?.dataset.price;if(!key)return;
@@ -60,21 +59,28 @@ function updatePricing(){
  updateCalculator();
 }
 document.getElementById("currencySelect").addEventListener("change",e=>{currency=e.target.value;localStorage.setItem("os_currency",currency);updatePricing()});
-document.getElementById("currencyButton").addEventListener("click",()=>document.getElementById("currencySelect").focus());
 document.querySelectorAll(".billing-toggle button").forEach(b=>b.addEventListener("click",()=>{
  document.querySelectorAll(".billing-toggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");billing=b.dataset.billing;updatePricing();
 }));
 const saved=localStorage.getItem("os_currency");if(saved&&currencies[saved])currency=saved;
 
+let calcPlan="team", calcBilling="monthly";
 function updateCalculator(){
- const plan=document.getElementById("calcPlan").value, users=Math.max(1,Math.min(500,+document.getElementById("userCount").value||1)), annual=document.getElementById("calcBilling").value==="annual";
- let per=basePrices[plan]*(annual?.8:1);
+ const users=Math.max(1,Math.min(500,+document.getElementById("userCount").value||1));
+ document.getElementById("userCountValue").textContent=users;
+ const annual=calcBilling==="annual";
+ let per=basePrices[calcPlan]*(annual?.8:1);
  const total=per*users;
  document.getElementById("calcTotal").textContent=currencies[currency].symbol+" "+formatMoney(total);
- document.getElementById("calcBreakdown").textContent=`${users} users × ${currencies[currency].symbol}${formatMoney(per)} / month${annual?" (annual billing)":" "}`;
+ document.getElementById("calcBreakdown").textContent=`${users} users × ${currencies[currency].symbol}${formatMoney(per)} / month${annual?" (annual billing)":""}`;
 }
-["calcPlan","userCount","calcBilling"].forEach(id=>document.getElementById(id).addEventListener("input",updateCalculator));
-["calcPlan","userCount","calcBilling"].forEach(id=>document.getElementById(id).addEventListener("change",updateCalculator));
+document.querySelectorAll("#calcPlanToggle button").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("#calcPlanToggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");calcPlan=b.dataset.plan;updateCalculator();
+}));
+document.querySelectorAll("#calcBillingToggle button").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("#calcBillingToggle button").forEach(x=>x.classList.remove("active"));b.classList.add("active");calcBilling=b.dataset.billing;updateCalculator();
+}));
+document.getElementById("userCount").addEventListener("input",updateCalculator);
 updatePricing();
 
 document.getElementById("contactForm").addEventListener("submit",e=>{
@@ -95,7 +101,7 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
     hero.prepend(video);
   }
 
-  const cards=[...document.querySelectorAll(".service-demo,.price-card,.calculator,.principles>div,.form,.service-card,.workflow-step")];
+  const cards=[...document.querySelectorAll(".service-demo,.price-card,.calculator,.principles>div,.form,.workflow-step")];
   cards.forEach(card=>{
     card.addEventListener("pointermove",e=>{
       if(window.innerWidth<800)return;
@@ -124,15 +130,19 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
   }
 })();
 
-/* Highlight the corresponding showcase card while reading service details. */
+/* Interactive service switcher: click a tab, or scroll to a detail section, to change the active panel. */
 (function(){
-  const map={ai:".sc-ai",crm:".sc-crm",marketing:".sc-marketing",analytics:".sc-analytics",erp:".sc-erp"};
+  const map={ai:"ss-ai",crm:"ss-crm",marketing:"ss-marketing",analytics:"ss-analytics",erp:"ss-erp"};
+  function activate(target){
+    document.querySelectorAll(".ss-tab").forEach(t=>t.classList.toggle("active",t.dataset.target===target));
+    document.querySelectorAll(".ss-panel").forEach(p=>p.classList.toggle("active",p.id===target));
+  }
+  document.querySelectorAll(".ss-tab").forEach(tab=>tab.addEventListener("click",()=>activate(tab.dataset.target)));
+
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(!entry.isIntersecting)return;
-      document.querySelectorAll(".service-card").forEach(c=>c.classList.remove("active"));
-      const card=document.querySelector(map[entry.target.id]);
-      if(card)card.classList.add("active");
+      activate(map[entry.target.id]);
     });
   },{rootMargin:"-30% 0px -50% 0px"});
   Object.keys(map).forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el)});
