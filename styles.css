@@ -86,10 +86,12 @@ footer:before{content:"";position:absolute;width:500px;height:300px;right:-180px
 .ss-tab[data-target="ss-analytics"].active:before{background:linear-gradient(180deg,#20a464,#15a4d8)}
 .ss-tab[data-target="ss-erp"].active:before{background:linear-gradient(180deg,#233f57,#1559d6)}
 .ss-panels{position:relative}
-.ss-panel{display:none;grid-template-columns:1fr 1fr;min-height:420px}
-.ss-panel.active{display:grid}
+.ss-panel{display:none;grid-template-columns:1fr 1fr;height:460px}
+.ss-panel.active{display:grid;animation:panelIn .5s cubic-bezier(.2,.8,.2,1) both}
 .ss-media{position:relative;overflow:hidden;background:#0d2338}
+.ss-media:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,20,32,.4),transparent 45%);pointer-events:none}
 .ss-media img{width:100%;height:100%;object-fit:cover;display:block}
+.ss-panel.active .ss-media img{animation:mediaZoom .6s cubic-bezier(.2,.8,.2,1) both}
 .ss-info{padding:44px 46px;display:flex;flex-direction:column;justify-content:center}
 .ss-kicker{font-size:9px;letter-spacing:1.8px;color:var(--blue);font-weight:800}
 .ss-info h3{font-size:30px;letter-spacing:-1px;margin:10px 0 12px;color:var(--navy)}
@@ -102,13 +104,20 @@ footer:before{content:"";position:absolute;width:500px;height:300px;right:-180px
 #ss-marketing .ss-kicker{color:#7a4de8}
 #ss-analytics .ss-kicker{color:#20a464}
 #ss-erp .ss-kicker{color:#10283d}
+.ss-tab[data-target="ss-ai"].active{background:linear-gradient(90deg,rgba(21,89,214,.07),transparent)}
+.ss-tab[data-target="ss-crm"].active{background:linear-gradient(90deg,rgba(21,164,216,.07),transparent)}
+.ss-tab[data-target="ss-marketing"].active{background:linear-gradient(90deg,rgba(122,77,232,.07),transparent)}
+.ss-tab[data-target="ss-analytics"].active{background:linear-gradient(90deg,rgba(32,164,100,.07),transparent)}
+.ss-tab[data-target="ss-erp"].active{background:linear-gradient(90deg,rgba(16,40,61,.07),transparent)}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes mediaZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
 
 @media(max-width:900px){
   .service-switcher{grid-template-columns:1fr}
   .ss-tabs{flex-direction:row;overflow-x:auto}
   .ss-tab{flex:0 0 auto;border-bottom:0;border-right:1px solid var(--line);white-space:nowrap}
   .ss-tab:before{left:0;right:0;top:auto;bottom:0;width:auto;height:3px}
-  .ss-panel{grid-template-columns:1fr}
+  .ss-panel{grid-template-columns:1fr;height:auto}
   .ss-media{height:220px}
   .ss-info{padding:30px 26px}
 }
