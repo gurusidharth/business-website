@@ -64,9 +64,9 @@ document.querySelectorAll(".billing-toggle button").forEach(b=>b.addEventListene
 const saved=localStorage.getItem("os_currency");if(saved&&currencies[saved])currency=saved;
 updatePricing();
 
-/* Submits to a Google Apps Script Web App, which logs the enquiry to a Google Sheet
-   and emails a notification. See google-apps-script/Code.gs for the backend script
-   and setup steps — replace the placeholder URL below with your deployed Web App URL. */
+/* Submits to a Google Apps Script Web App, which emails the enquiry to NOTIFY_EMAIL.
+   See google-apps-script/Code.gs for the backend script and setup steps — replace
+   the placeholder URL below with your deployed Web App URL. */
 const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
 document.getElementById("contactForm").addEventListener("submit",async e=>{
