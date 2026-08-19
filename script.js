@@ -95,7 +95,7 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
     hero.prepend(video);
   }
 
-  const cards=[...document.querySelectorAll(".service-demo,.price-card,.calculator,.principles>div,.form")];
+  const cards=[...document.querySelectorAll(".service-demo,.price-card,.calculator,.principles>div,.form,.service-card,.workflow-step")];
   cards.forEach(card=>{
     card.addEventListener("pointermove",e=>{
       if(window.innerWidth<800)return;
