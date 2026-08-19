@@ -60,15 +60,16 @@ footer:before{content:"";position:absolute;width:500px;height:300px;right:-180px
 .service-card{
   position:relative;display:flex;flex-direction:column;overflow:hidden;
   background:#fff;border:1px solid var(--line);border-radius:18px;
-  padding:24px 22px 22px;min-height:250px;
   box-shadow:0 10px 30px rgba(16,40,61,.05);
   transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.75,.2,1),box-shadow .4s,border-color .3s;
 }
-.service-card:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;opacity:.9}
+.service-card:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;z-index:2;opacity:.9}
 .service-card:hover,.service-card.active{transform:perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-8px)}
-.sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.sc-index{font-size:10px;letter-spacing:1.5px;color:#a7b3c2;font-weight:800}
-.sc-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:18px;box-shadow:0 10px 22px rgba(16,40,61,.18)}
+.sc-media{position:relative;height:150px;overflow:hidden}
+.sc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.service-card:hover .sc-media img{transform:scale(1.07)}
+.sc-media .sc-index{position:absolute;top:12px;left:14px;font-size:10px;letter-spacing:1.5px;font-weight:800;color:#fff;background:rgba(8,20,32,.5);backdrop-filter:blur(6px);padding:4px 9px;border-radius:20px}
+.sc-body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1}
 .sc-kicker{font-size:8px;letter-spacing:1.6px;color:var(--blue);font-weight:800}
 .service-card h3{font-size:19px;letter-spacing:-.5px;margin:5px 0 8px;color:var(--navy)}
 .service-card p{font-size:11.5px;line-height:1.6;color:var(--muted);margin:0}
@@ -80,45 +81,44 @@ footer:before{content:"";position:absolute;width:500px;height:300px;right:-180px
 .service-card:hover .sc-bottom span:last-child{transform:translateX(5px)}
 
 .sc-ai:before{background:linear-gradient(90deg,#1559d6,#15a4d8)}
-.sc-ai .sc-icon{background:linear-gradient(145deg,#1559d6,#15a4d8)}
 .sc-ai:hover,.sc-ai.active{border-color:#bcdcff;box-shadow:0 30px 70px rgba(21,89,214,.16)}
 
 .sc-crm:before{background:linear-gradient(90deg,#15a4d8,#1559d6)}
-.sc-crm .sc-icon{background:linear-gradient(145deg,#15a4d8,#1980c2)}
 .sc-crm:hover,.sc-crm.active{border-color:#b8e4f0;box-shadow:0 30px 70px rgba(21,164,216,.16)}
 
 .sc-marketing:before{background:linear-gradient(90deg,#7a4de8,#5d9df4)}
-.sc-marketing .sc-icon{background:linear-gradient(145deg,#7a4de8,#5d9df4)}
 .sc-marketing:hover,.sc-marketing.active{border-color:#dccdfa;box-shadow:0 30px 70px rgba(122,77,232,.16)}
 
 .sc-analytics:before{background:linear-gradient(90deg,#20a464,#15a4d8)}
-.sc-analytics .sc-icon{background:linear-gradient(145deg,#20a464,#15a4d8)}
 .sc-analytics:hover,.sc-analytics.active{border-color:#bdeed7;box-shadow:0 30px 70px rgba(32,164,100,.16)}
 
 .sc-erp:before{background:linear-gradient(90deg,#10283d,#1559d6)}
-.sc-erp .sc-icon{background:linear-gradient(145deg,#233f57,#1559d6)}
 .sc-erp:hover,.sc-erp.active{border-color:#c7d6e6;box-shadow:0 30px 70px rgba(16,40,61,.18)}
 
 @media(max-width:1180px){.service-showcase{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:780px){.service-showcase{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.service-showcase{grid-template-columns:1fr}.service-card{min-height:auto}}
+@media(max-width:520px){.service-showcase{grid-template-columns:1fr}}
 
 /* ===== SERVICE WORKFLOW GALLERIES ===== */
 .workflow-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
 .workflow-step{
-  position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;
-  padding:22px 19px;box-shadow:0 10px 26px rgba(16,40,61,.05);
+  position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:16px;
+  box-shadow:0 10px 26px rgba(16,40,61,.05);
   transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.75,.2,1),box-shadow .35s,border-color .3s;
 }
+.workflow-step:before{content:"";display:block;height:3px}
 .workflow-step:hover{box-shadow:0 28px 60px rgba(16,40,61,.13);border-color:#d3e3f5}
-.ws-num{position:absolute;top:16px;right:17px;font-size:10px;font-weight:800;color:#c3cedb;letter-spacing:.5px}
-.ws-icon{width:38px;height:38px;padding:9px;border-radius:11px;color:#fff;box-shadow:0 10px 20px rgba(21,89,214,.22);margin-bottom:15px;transform:translateZ(22px)}
+.ws-media{position:relative;height:130px;overflow:hidden}
+.ws-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.workflow-step:hover .ws-media img{transform:scale(1.08)}
+.ws-num{position:absolute;top:11px;right:13px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(8,20,32,.5);backdrop-filter:blur(6px);padding:3px 8px;border-radius:20px;letter-spacing:.5px}
+.ws-body{padding:16px 17px 18px}
 .workflow-step b{display:block;font-size:12.5px;letter-spacing:-.1px;margin-bottom:5px;color:var(--navy)}
 .workflow-step span{display:block;font-size:10.5px;line-height:1.55;color:var(--muted)}
-#ai .ws-icon{background:linear-gradient(145deg,#1559d6,#15a4d8)}
-#crm .ws-icon{background:linear-gradient(145deg,#15a4d8,#1980c2);box-shadow:0 10px 20px rgba(21,164,216,.22)}
-#marketing .ws-icon{background:linear-gradient(145deg,#7a4de8,#5d9df4);box-shadow:0 10px 20px rgba(122,77,232,.22)}
-#analytics .ws-icon{background:linear-gradient(145deg,#20a464,#15a4d8);box-shadow:0 10px 20px rgba(32,164,100,.22)}
-#erp .ws-icon{background:linear-gradient(145deg,#233f57,#1559d6);box-shadow:0 10px 20px rgba(16,40,61,.25)}
+#ai .workflow-step:before{background:linear-gradient(90deg,#1559d6,#15a4d8)}
+#crm .workflow-step:before{background:linear-gradient(90deg,#15a4d8,#1980c2)}
+#marketing .workflow-step:before{background:linear-gradient(90deg,#7a4de8,#5d9df4)}
+#analytics .workflow-step:before{background:linear-gradient(90deg,#20a464,#15a4d8)}
+#erp .workflow-step:before{background:linear-gradient(90deg,#233f57,#1559d6)}
 @media(max-width:980px){.workflow-gallery{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:580px){.workflow-gallery{grid-template-columns:1fr;margin-top:38px}}
