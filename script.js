@@ -6,6 +6,16 @@ window.addEventListener("scroll",()=>header.classList.toggle("scrolled",scrollY>
 const reveals=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(x=>reveals.observe(x));
 
+/* Magnetic pull toward the cursor on primary buttons. */
+document.querySelectorAll(".btn.primary").forEach(btn=>{
+ btn.addEventListener("pointermove",e=>{
+   if(innerWidth<800)return;
+   const r=btn.getBoundingClientRect();
+   btn.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.4}px)`;
+ });
+ btn.addEventListener("pointerleave",()=>{btn.style.transform=""});
+});
+
 const hero=document.getElementById("hero"), visual=document.getElementById("heroVisual");
 hero.addEventListener("pointermove",e=>{
  const r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
@@ -93,20 +103,16 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
     card.addEventListener("pointerleave",()=>{card.style.transform=""});
   });
 
-  // Subtle mouse parallax for the hero visual.
+  // Subtle mouse parallax for the hero visual (the 3D scene itself reacts separately, in hero-3d.js).
   const hv=document.getElementById("heroVisual");
   if(hv && hero){
     hero.addEventListener("pointermove",e=>{
       if(innerWidth<800)return;
       const r=hero.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
       hv.style.transform=`translate3d(${x*12}px,${y*8}px,0)`;
-      const d=hv.querySelector(".dashboard");
-      if(d)d.style.transform=`rotateY(${(-12+x*9).toFixed(2)}deg) rotateX(${(6-y*6).toFixed(2)}deg) rotateZ(-1deg) translateZ(10px)`;
     });
     hero.addEventListener("pointerleave",()=>{
       hv.style.transform="";
-      const d=hv.querySelector(".dashboard");
-      if(d)d.style.transform="";
     });
   }
 })();

@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
 </head>
 <body>
 <header class="header" id="header">
@@ -38,19 +41,9 @@
       <div class="hero-actions"><a class="btn primary" href="#services">Explore Services <span>→</span></a><a class="btn ghost" href="#pricing">View Pricing</a></div>
       <div class="hero-trust"><span>✓ Flexible plans</span><span>✓ Built for teams</span><span>✓ Global-ready</span></div>
     </div>
-    <div class="hero-visual" id="heroVisual" aria-label="Animated business platform preview">
+    <div class="hero-visual" id="heroVisual" aria-label="Animated 3D intelligence visualization">
       <div class="orb orb-a"></div><div class="orb orb-b"></div>
-      <div class="dashboard main-panel parallax-card">
-        <div class="panel-head"><span>Business Command Center</span><span class="live">● LIVE</span></div>
-        <div class="mini-grid">
-          <div class="mini"><small>Revenue</small><strong data-demo="84600">$84.6K</strong><em>+24.8%</em></div>
-          <div class="mini"><small>Leads</small><strong>1,284</strong><em>+18.4%</em></div>
-          <div class="mini"><small>Automation</small><strong>76%</strong><em>+12.1%</em></div>
-          <div class="mini"><small>ROI</small><strong>4.8×</strong><em>+31.2%</em></div>
-        </div>
-        <div class="chart-wrap"><div class="chart-label"><span>Growth</span><small>Last 7 months</small></div><div class="chart-bars"><i style="--h:32%"></i><i style="--h:44%"></i><i style="--h:39%"></i><i style="--h:55%"></i><i style="--h:63%"></i><i style="--h:72%"></i><i style="--h:91%"></i></div></div>
-        <div class="ai-card"><span class="spark">✦</span><div><b>AI recommendation</b><p>Automate lead follow-ups to reduce response time.</p></div><span class="arrow">→</span></div>
-      </div>
+      <div class="hero-3d-stage" id="hero3dStage"></div>
       <div class="float-card lead-card"><span class="float-icon blue">◎</span><div><b>New lead</b><small>Qualified automatically</small></div><strong>+1</strong></div>
       <div class="float-card ai-float"><span class="float-icon purple">✦</span><div><b>AI Agent</b><small>Customer replied</small></div><span class="green-dot"></span></div>
     </div>
@@ -228,5 +221,6 @@
 
 <footer><div class="container footer-grid"><div><a class="logo footer-logo" href="#home"><span class="logo-mark">O</span><span><b>ONE SOLUTIONS</b><small>One Platform. Endless Possibilities.</small></span></a><p>AI-powered SaaS solutions for businesses ready to work smarter and grow.</p></div><div><h4>Services</h4><a href="#ai">AI Automation</a><a href="#crm">CRM & Sales</a><a href="#marketing">Digital Marketing</a><a href="#analytics">Analytics</a><a href="#erp">ERP & Operations</a></div><div><h4>Company</h4><a href="#about">About Us</a><a href="#pricing">Pricing</a><a href="#resources">Resources</a><a href="#contact">Contact</a></div><div><h4>Contact</h4><p>hello@onesolutions.com</p><p>Worldwide / Remote</p></div></div><div class="container copyright"><span>© 2026 One Solutions. All rights reserved.</span><span>Privacy Policy &nbsp; | &nbsp; Terms of Service</span></div></footer>
 <script src="script.js"></script>
+<script type="module" src="hero-3d.js"></script>
 </body>
 </html>
